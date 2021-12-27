@@ -34,10 +34,10 @@ jobs:
       - name: Build 
         run: |
           pwd
-          ls
-          cp -rf Makefile /fakecloud/Makefile
-          pwd
+          ls -al
+          cp -rf Makefile fakecloud/Makefile
           cd fakecloud
+          ls -al
           ./make all
         
       - name: Upload firmware directory
