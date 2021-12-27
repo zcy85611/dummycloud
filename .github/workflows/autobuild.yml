@@ -26,18 +26,19 @@ jobs:
 
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
+        
+      - name: Clone source code
+        run: |
+          git clone https://github.com/ddvk/rmfakecloud.git fakecloud
 
       - name: Build 
         run: |
+          pwd
           ls
           cp -rf Makefile /fakecloud/Makefile
           pwd
           cd fakecloud
           ./make all
-
-      - name: Clone source code
-        run: |
-          git clone https://github.com/ddvk/rmfakecloud.git fakecloud
         
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
