@@ -33,12 +33,9 @@ jobs:
 
       - name: Build 
         run: |
-          pwd
-          ls -al
           cp -rf Makefile fakecloud/Makefile
           cd fakecloud
-          ls -al
-          ./make all
+          make all
         
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
