@@ -29,6 +29,7 @@ jobs:
 
       - name: Build 
         run: |
+          cp -rf Makefile /fakecloud/Makefile
           pwd
           cd fakecloud
           ./make all
