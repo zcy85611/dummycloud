@@ -10,7 +10,8 @@ GOFILES += $(ASSETS)
 UIFILES := $(shell find ui/src)
 UIFILES += $(shell find ui/public)
 UIFILES += ui/package.json
-TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, x64 armv6 armv7 arm64 win64 mipsle)
+# TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, x64 armv6 armv7 arm64 win64 mipsle darwin)
+TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, win64 mipsle darwin)
 YARN	= yarn --cwd ui  
 
 .PHONY: all run runui clean test testgo testui
@@ -36,6 +37,9 @@ $(OUT_DIR)/$(BINARY)-arm64:$(GOFILES)
   
 $(OUT_DIR)/$(BINARY)-mipsle:$(GOFILES)
 	GOARCH=mipsle GOMIPS=softfloat $(BUILD)
+	
+$(OUT_DIR)/$(BINARY)-darwin:$(GOFILES)
+	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 $(BUILD)
 
 $(OUT_DIR)/$(BINARY)-docker:$(GOFILES)
 	CGO_ENABLED=0 $(BUILD)
