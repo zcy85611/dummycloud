@@ -28,15 +28,6 @@ jobs:
         run: |
           git clone https://github.com/ddvk/rmfakecloud.git fakecloud
 
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: 'yarn'
-          cache-dependency-path: fakecloud/ui/yarn.lock
-
       - name: Build 
         run: |
           cp -rf Makefile fakecloud/Makefile
