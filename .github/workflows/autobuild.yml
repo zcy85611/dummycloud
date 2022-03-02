@@ -28,9 +28,11 @@ jobs:
         run: |
           git clone https://github.com/ddvk/rmfakecloud.git fakecloud
           pwd
+          ls
 
       - name: Build 
         run: |
+          pwd
           cp -rf Makefile fakecloud/Makefile
           cd fakecloud
           make all
