@@ -43,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: framebuffer
-          path: dist/*
+          path: /home/runner/work/dummycloud/dummycloud/fakecloud/dist/*
