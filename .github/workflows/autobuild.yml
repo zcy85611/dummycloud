@@ -27,6 +27,7 @@ jobs:
       - name: Clone source code
         run: |
           git clone https://github.com/ddvk/rmfakecloud.git fakecloud
+          pwd
 
       - name: Build 
         run: |
