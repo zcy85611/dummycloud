@@ -38,6 +38,7 @@ jobs:
           cp -rf Makefile fakecloud/Makefile
           cd fakecloud
           make all
+          upx --best /home/runner/work/dummycloud/dummycloud/fakecloud/dist/*
         
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
