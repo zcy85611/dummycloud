@@ -38,7 +38,7 @@ jobs:
           cp -rf Makefile fakecloud/Makefile
           cd fakecloud
           CI=false make all
-          # upx --lzma --best /home/runner/work/dummycloud/dummycloud/fakecloud/dist/rmfakecloud-mipsle
+          upx --lzma --best /home/runner/work/dummycloud/dummycloud/fakecloud/dist/rmfakecloud-mipsle
         
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
