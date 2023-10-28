@@ -36,10 +36,9 @@ jobs:
       - name: Build 
         run: |
           cp -rf Makefile fakecloud/Makefile
-          mv *.patch fakecloud
+          mv rmcloud.patch fakecloud
           cd fakecloud
-          patch -p1 < 1.patch
-          patch -p1 < 1.patch
+          patch -p1 < rmcloud.patch
           CI=false make all
           # upx --lzma --best /home/runner/work/dummycloud/dummycloud/fakecloud/dist/rmfakecloud-mipsle
         
