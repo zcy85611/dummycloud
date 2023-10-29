@@ -14,7 +14,8 @@ UIFILES += ui/package.json
 # TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, x64)
 # TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, mipsle)
 # TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, arm64)
-TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, x64)
+# TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, x64)
+TARGETS := $(addprefix $(OUT_DIR)/$(BINARY)-, win64)
 YARN	= yarn --cwd ui  
 
 .PHONY: all run runui clean test testgo testui
