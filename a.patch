@@ -1,0 +1,33 @@
+diff --git a/internal/storage/fs/blobstore.go b/internal/storage/fs/blobstore.go
+index 6f714b3..b29ad1e 100644
+--- a/internal/storage/fs/blobstore.go
++++ b/internal/storage/fs/blobstore.go
+@@ -460,14 +460,6 @@ func (fs *FileSystemStorage) LoadBlob(uid, blobid string) (reader io.ReadCloser,
+ 	log.Debugln("Fullpath:", blobPath)
+ 	if blobid == rootBlob {
+ 		historyPath := path.Join(fs.getUserBlobPath(uid), historyFile)
+-		lock := fslock.New(historyPath)
+-		err := lock.LockWithTimeout(time.Duration(time.Second * 5))
+-		if err != nil {
+-			log.Error("cannot obtain lock")
+-			return nil, 0, 0, err
+-		}
+-		defer lock.Unlock()
+-
+ 		fi, err1 := os.Stat(historyPath)
+ 		if err1 == nil {
+ 			generation = generationFromFileSize(fi.Size())
+@@ -490,13 +482,6 @@ func (fs *FileSystemStorage) StoreBlob(uid, id string, stream io.Reader, lastGen
+ 	reader := stream
+ 	if id == rootBlob {
+ 		historyPath := path.Join(fs.getUserBlobPath(uid), historyFile)
+-		lock := fslock.New(historyPath)
+-		err = lock.LockWithTimeout(time.Duration(time.Second * 5))
+-		if err != nil {
+-			log.Error("cannot obtain lock")
+-		}
+-		defer lock.Unlock()
+-
+ 		currentGen := int64(0)
+ 		fi, err1 := os.Stat(historyPath)
+ 		if err1 == nil {
