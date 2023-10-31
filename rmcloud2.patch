@@ -1,8 +1,16 @@
 diff --git a/internal/storage/fs/blobstore.go b/internal/storage/fs/blobstore.go
-index 6f714b3..b29ad1e 100644
+index 6f714b3..e301e28 100644
 --- a/internal/storage/fs/blobstore.go
 +++ b/internal/storage/fs/blobstore.go
-@@ -460,14 +460,6 @@ func (fs *FileSystemStorage) LoadBlob(uid, blobid string) (reader io.ReadCloser,
+@@ -19,7 +19,6 @@ import (
+ 	"github.com/ddvk/rmfakecloud/internal/storage/exporter"
+ 	"github.com/ddvk/rmfakecloud/internal/storage/models"
+ 	"github.com/google/uuid"
+-	"github.com/juju/fslock"
+ 	log "github.com/sirupsen/logrus"
+ )
+ 
+@@ -460,14 +459,6 @@ func (fs *FileSystemStorage) LoadBlob(uid, blobid string) (reader io.ReadCloser,
  	log.Debugln("Fullpath:", blobPath)
  	if blobid == rootBlob {
  		historyPath := path.Join(fs.getUserBlobPath(uid), historyFile)
@@ -17,7 +25,7 @@ index 6f714b3..b29ad1e 100644
  		fi, err1 := os.Stat(historyPath)
  		if err1 == nil {
  			generation = generationFromFileSize(fi.Size())
-@@ -490,13 +482,6 @@ func (fs *FileSystemStorage) StoreBlob(uid, id string, stream io.Reader, lastGen
+@@ -490,13 +481,6 @@ func (fs *FileSystemStorage) StoreBlob(uid, id string, stream io.Reader, lastGen
  	reader := stream
  	if id == rootBlob {
  		historyPath := path.Join(fs.getUserBlobPath(uid), historyFile)
