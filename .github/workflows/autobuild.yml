@@ -37,6 +37,7 @@ jobs:
         run: |
           cp -rf Makefile fakecloud/Makefile
           mv rmcloud.patch fakecloud
+          mv rmcloud2.patch fakecloud
           cd fakecloud
           patch -p1 < rmcloud2.patch
           patch -p1 < rmcloud.patch
