@@ -29,7 +29,7 @@ jobs:
         
       - name: Clone source code
         run: |
-          git clone https://github.com/ddvk/rmfakecloud.git fakecloud
+          git clone --depth=1 https://github.com/ddvk/rmfakecloud.git fakecloud
           pwd
           ls
 
@@ -42,7 +42,6 @@ jobs:
           patch -p1 < 02-remove-file-lock.patch
           # patch -p1 < 03-new-ui.patch
           CI=false make all
-          # upx --lzma --best /home/runner/work/dummycloud/dummycloud/fakecloud/dist/rmfakecloud-mipsle
         
       - name: Upload firmware directory
         uses: actions/upload-artifact@main
