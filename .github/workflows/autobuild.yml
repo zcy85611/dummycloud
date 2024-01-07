@@ -38,8 +38,7 @@ jobs:
           cp -rf Makefile fakecloud/Makefile
           mv *.patch fakecloud
           cd fakecloud
-          # patch -p1 < 01-sync-3.7-fix.patch
-          # patch -p1 < 02-remove-file-lock.patch
+          patch -p1 < 02-remove-file-lock.patch
           # patch -p1 < 03-new-ui.patch
           CI=false make all
         
